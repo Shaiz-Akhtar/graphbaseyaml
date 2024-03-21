@@ -99,3 +99,12 @@ components:
         value:
           type: integer
           description: The value of the transaction output in satoshis
+        size:
+          type: integer
+          description: The size of the transaction
+        weight:
+          type: integer
+          description: The weight of the transaction
+        fee:
+          type: integer
+          description: The fee of the transaction
