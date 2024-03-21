@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  title: Bitcoin Address UTXO API
+  title: Bitcoin Address APIs
   version: 1.0.0
 paths:
   /address/{address}/utxo:
@@ -22,6 +22,7 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/utxo"
+
   /address/{address}/txs:
     get:
       summary: Get transactions for a Bitcoin address
@@ -43,6 +44,7 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Transaction"
+
 components:
   schemas:
     utxo:
@@ -72,7 +74,8 @@ components:
         value:
           type: integer
           description: The value of the unspent output in satoshis
-  Transaction:
+
+    Transaction:
       type: object
       properties:
         txid:
@@ -107,4 +110,4 @@ components:
           description: The weight of the transaction
         fee:
           type: integer
-          description: The fee of the transaction
+          description: The fee of the transaction in satoshis
