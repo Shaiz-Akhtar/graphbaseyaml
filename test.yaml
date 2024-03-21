@@ -22,6 +22,25 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/utxo"
+  /address/{address}/txs:
+      get:
+        summary: Get total transactions for a Bitcoin address
+        parameters:
+          - in: path
+            name: address
+            required: true
+            schema:
+              type: string
+            description: The Bitcoin address for which to retrieve total transactions
+        responses:
+          "200":
+            description: Successful response
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: "#/components/schemas/transaction"
 components:
   schemas:
     utxo:
@@ -51,3 +70,67 @@ components:
         value:
           type: integer
           description: The value of the unspent output in satoshis
+          transaction:
+      type: object
+      properties:
+        txid:
+          type: string
+          description: The transaction ID
+        version:
+          type: integer
+          description: The transaction version
+        locktime:
+          type: integer
+          description: The transaction lock time
+        vin:
+          type: array
+          items:
+            $ref: "#/components/schemas/input"
+          description: The transaction inputs
+        vout:
+          type: array
+          items:
+            $ref: "#/components/schemas/output"
+          description: The transaction outputs
+        size:
+          type: integer
+          description: The transaction size
+        weight:
+          type: integer
+          description: The transaction weight
+        fee:
+          type: integer
+          description: The transaction fee
+        status:
+          type: object
+          properties:
+            confirmed:
+              type: boolean
+              description: Indicates if the transaction is confirmed
+            block_height:
+              type: integer
+              description: The height of the block in which the transaction was included
+            block_hash:
+              type: string
+              description: The hash of the block in which the transaction was included
+            block_time:
+              type: integer
+              description: The timestamp of the block in which the transaction was included
+      required:
+        - txid
+        - version
+        - locktime
+        - vin
+        - vout
+        - size
+        - weight
+        - fee
+        - status
+    input:
+      type: object
+      properties:
+        // properties of input object
+    output:
+      type: object
+      properties:
+        // properties of output object
