@@ -23,24 +23,26 @@ paths:
                 items:
                   $ref: "#/components/schemas/utxo"
   /address/{address}/txs:
-      get:
-        summary: Get total transactions for a Bitcoin address
-        parameters:
-          - in: path
-            name: address
-            required: true
-            schema:
-              type: string
-            description: The Bitcoin address for which to retrieve total transactions
-        responses:
-          "200":
-            description: Successful response
-            content:
-              application/json:
-                schema:
-                  type: array
-                  items:
-                    $ref: "#/components/schemas/transaction"
+    get:
+      summary: Get transactions for a Bitcoin address
+      description: Retrieve transactions associated with a given Bitcoin address.
+      operationId: getAddressTransactions
+      parameters:
+        - name: address
+          in: path
+          description: The Bitcoin address for which to retrieve transactions
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: A list of transactions associated with the provided address
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Transaction"
 components:
   schemas:
     utxo:
@@ -70,37 +72,15 @@ components:
         value:
           type: integer
           description: The value of the unspent output in satoshis
-          transaction:
+  Transaction:
       type: object
       properties:
         txid:
           type: string
           description: The transaction ID
-        version:
-          type: integer
-          description: The transaction version
-        locktime:
-          type: integer
-          description: The transaction lock time
-        vin:
-          type: array
-          items:
-            $ref: "#/components/schemas/input"
-          description: The transaction inputs
         vout:
-          type: array
-          items:
-            $ref: "#/components/schemas/output"
-          description: The transaction outputs
-        size:
           type: integer
-          description: The transaction size
-        weight:
-          type: integer
-          description: The transaction weight
-        fee:
-          type: integer
-          description: The transaction fee
+          description: The transaction output index
         status:
           type: object
           properties:
@@ -116,21 +96,6 @@ components:
             block_time:
               type: integer
               description: The timestamp of the block in which the transaction was included
-      required:
-        - txid
-        - version
-        - locktime
-        - vin
-        - vout
-        - size
-        - weight
-        - fee
-        - status
-    input:
-      type: object
-      properties:
-        // properties of input object
-    output:
-      type: object
-      properties:
-        // properties of output object
+        value:
+          type: integer
+          description: The value of the transaction output in satoshis
