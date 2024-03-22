@@ -93,7 +93,6 @@ components:
           description: The transaction ID
         vout:
           type: object
-          description: The transaction output index
           properties:
             scriptpubkey_type:
               type: string
