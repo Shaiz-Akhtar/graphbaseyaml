@@ -92,8 +92,12 @@ components:
           type: string
           description: The transaction ID
         vout:
-          type: string
+          type: object
           description: The transaction output index
+          properties:
+            scriptpubkey_type":
+              type: string
+              description: returns script public key type
         status:
           type: object
           properties:
