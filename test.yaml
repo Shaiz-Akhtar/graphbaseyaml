@@ -92,7 +92,7 @@ components:
           type: string
           description: The transaction ID
         vout:
-          type: integer
+          type: string
           description: The transaction output index
         status:
           type: object
