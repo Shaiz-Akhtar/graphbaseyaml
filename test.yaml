@@ -74,16 +74,7 @@ components:
         value:
           type: integer
           description: The value of the unspent output in satoshis
-        size:
-          type: integer
-          description: The size of the transaction
-        weight:
-          type: integer
-          description: The weight of the transaction
-        fee:
-          type: integer
-          description: The fee of the transaction in satoshis
-
+        
 
     Transaction:
       type: object
@@ -91,17 +82,6 @@ components:
         txid:
           type: string
           description: The transaction ID
-        vout:
-          type: array
-          items:
-            type: object
-            properties:
-              scriptpubkey_type:
-                type: string
-                description: Returns script public key type
-              value:
-                type: integer
-                description: The value of the transaction output in satoshis
         status:
           type: object
           properties:
