@@ -74,7 +74,6 @@ components:
         value:
           type: integer
           description: The value of the unspent output in satoshis
-        
 
     Transaction:
       type: object
@@ -82,6 +81,9 @@ components:
         txid:
           type: string
           description: The transaction ID
+        vout:
+          type: integer
+          description: The transaction output index
         status:
           type: object
           properties:
