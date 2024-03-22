@@ -91,7 +91,7 @@ components:
         txid:
           type: string
           description: The transaction ID
-        vvout:
+        vout:
           type: array
           items:
             type: object
