@@ -95,7 +95,7 @@ components:
           type: object
           description: The transaction output index
           properties:
-            scriptpubkey_type":
+            scriptpubkey_type:
               type: string
               description: returns script public key type
         status:
