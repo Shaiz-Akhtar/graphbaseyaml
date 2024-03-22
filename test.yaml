@@ -91,12 +91,17 @@ components:
         txid:
           type: string
           description: The transaction ID
-        vout:
-          type: object
-          properties:
-            scriptpubkey_type:
-              type: string
-              description: returns script public key type
+        vvout:
+          type: array
+          items:
+            type: object
+            properties:
+              scriptpubkey_type:
+                type: string
+                description: Returns script public key type
+              value:
+                type: integer
+                description: The value of the transaction output in satoshis
         status:
           type: object
           properties:
